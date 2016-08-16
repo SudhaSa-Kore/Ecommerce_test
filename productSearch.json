@@ -1,0 +1,260 @@
+{
+  "_v" : "16.6",
+  "_type":"product_search_result",
+  "count" : 4,
+  "hits" : [ {
+    "link" : "http://example.com/dw/shop/v16_6/products/25791388?pretty_print=true&client_id=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "product_id" : "25791388",
+    "product_name" : "Zacco",
+    "product_type" : 
+         {
+            "master" : true,
+            "option" : true
+         }
+  }, {
+    "link" : "http://example.com/dw/shop/v16_6/products/25772792?pretty_print=true&client_id=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "product_id" : "25772792",
+    "product_name" : "Aylin",
+    "product_type" : 
+         {
+            "bundle" : true
+         }    
+  }, {
+    "link" : "http://example.com/dw/shop/v16_6/products/25772717?pretty_print=true&client_id=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "product_id" : "25772717",
+    "product_name" : "Zerrick",
+    "product_type" : 
+         {
+            "variant" : true
+         }    
+  }, {
+    "link" : "http://example.com/dw/shop/v16_6/products/25772707?pretty_print=true&client_id=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "product_id" : "25772707",
+    "product_name" : "Bozwell",
+    "product_type" : 
+         {
+            "set" : true
+         }     
+  } ],
+  "query" : "shoes",
+  "refinements" : [ {
+    "attribute_id" : "cgid",
+    "label" : "Category",
+    "values" : [ {
+      "hit_count" : 0,
+      "label" : "Mens",
+      "value" : "mens"
+    }, {
+      "hit_count" : 0,
+      "label" : "Electronics",
+      "value" : "electronics"
+    }, {
+      "hit_count" : 0,
+      "label" : "Gift Certificates",
+      "value" : "gift-certificates"
+    }, {
+      "hit_count" : 0,
+      "label" : "Sale",
+      "value" : "top-seller"
+    }, {
+      "hit_count" : 1,
+      "label" : "New Arrivals",
+      "value" : "newarrivals"
+    }, {
+      "hit_count" : 4,
+      "label" : "Womens",
+      "value" : "womens",
+      "values" : [ {
+        "hit_count" : 0,
+        "label" : "Jewelry",
+        "value" : "womens-jewelry"
+      }, {
+        "hit_count" : 4,
+        "label" : "Accessories",
+        "value" : "womens-accessories",
+        "values" : [ {
+          "hit_count" : 0,
+          "label" : "Scarves",
+          "value" : "womens-accessories-scarves"
+        }, {
+          "hit_count" : 4,
+          "label" : "Shoes",
+          "value" : "womens-accessories-shoes",
+          "values" : [ ]
+        } ]
+      }, {
+        "hit_count" : 0,
+        "label" : "Clothing",
+        "value" : "womens-clothing"
+      } ]
+    } ]
+  }, {
+    "attribute_id" : "c_refinementColor",
+    "label" : "Color",
+    "values" : [ {
+      "hit_count" : 1,
+      "label" : "Beige",
+      "presentation_id" : "beige",
+      "value" : "Beige"
+    }, {
+      "hit_count" : 4,
+      "label" : "Black",
+      "presentation_id" : "black",
+      "value" : "Black"
+    }, {
+      "hit_count" : 0,
+      "label" : "Blue",
+      "presentation_id" : "blue",
+      "value" : "Blue"
+    }, {
+      "hit_count" : 0,
+      "label" : "Navy",
+      "presentation_id" : "navy",
+      "value" : "Navy"
+    }, {
+      "hit_count" : 1,
+      "label" : "Brown",
+      "presentation_id" : "brown",
+      "value" : "Brown"
+    }, {
+      "hit_count" : 0,
+      "label" : "Green",
+      "presentation_id" : "green",
+      "value" : "Green"
+    }, {
+      "hit_count" : 1,
+      "label" : "Grey",
+      "presentation_id" : "grey",
+      "value" : "Grey"
+    }, {
+      "hit_count" : 0,
+      "label" : "Orange",
+      "presentation_id" : "orange",
+      "value" : "Orange"
+    }, {
+      "hit_count" : 1,
+      "label" : "Pink",
+      "presentation_id" : "pink",
+      "value" : "Pink"
+    }, {
+      "hit_count" : 0,
+      "label" : "Purple",
+      "presentation_id" : "purple",
+      "value" : "Purple"
+    }, {
+      "hit_count" : 0,
+      "label" : "Red",
+      "presentation_id" : "red",
+      "value" : "Red"
+    }, {
+      "hit_count" : 1,
+      "label" : "White",
+      "presentation_id" : "white",
+      "value" : "White"
+    }, {
+      "hit_count" : 0,
+      "label" : "Yellow",
+      "presentation_id" : "yellow",
+      "value" : "Yellow"
+    }, {
+      "hit_count" : 0,
+      "label" : "Miscellaneous",
+      "presentation_id" : "miscellaneous",
+      "value" : "Miscellaneous"
+    } ]
+  }, {
+    "attribute_id" : "c_isNew",
+    "label" : "New Arrival",
+    "values" : [ ]
+  }, {
+    "attribute_id" : "c_size",
+    "label" : "Size",
+    "values" : [ {
+      "hit_count" : 0,
+      "label" : "OS",
+      "value" : "OS"
+    }, {
+      "hit_count" : 4,
+      "label" : "6",
+      "value" : "6"
+    }, {
+      "hit_count" : 4,
+      "label" : "6.5",
+      "value" : "6.5"
+    }, {
+      "hit_count" : 4,
+      "label" : "7",
+      "value" : "7"
+    }, {
+      "hit_count" : 4,
+      "label" : "7.5",
+      "value" : "7.5"
+    }, {
+      "hit_count" : 4,
+      "label" : "8",
+      "value" : "8"
+    }, {
+      "hit_count" : 3,
+      "label" : "8.5",
+      "value" : "8.5"
+    }, {
+      "hit_count" : 3,
+      "label" : "9",
+      "value" : "9"
+    }, {
+      "hit_count" : 4,
+      "label" : "9.5",
+      "value" : "9.5"
+    }, {
+      "hit_count" : 3,
+      "label" : "10",
+      "value" : "10"
+    }, {
+      "hit_count" : 1,
+      "label" : "11",
+      "value" : "11"
+    } ]
+  }, {
+    "attribute_id" : "price",
+    "label" : "Price",
+    "values" : [ {
+      "hit_count" : 4,
+      "label" : "$50 - $16.49",
+      "value" : "(50..100)"
+    } ]
+  } ],
+  "selected_refinements" : {
+    "price" : "(0..500)",
+    "c_refinementColor" : "Black",
+    "cgid" : "womens"
+  },
+  "selected_sorting_option" : "best-matches",
+  "sorting_options" : [ {
+    "id" : "best-matches",
+    "label" : "Best Matches"
+  }, {
+    "id" : "price-low-to-high",
+    "label" : "Price Low To High"
+  }, {
+    "id" : "price-high-to-low",
+    "label" : "Price High To Low"
+  }, {
+    "id" : "product-name-ascending",
+    "label" : "Product Name A - Z"
+  }, {
+    "id" : "product-name-descending",
+    "label" : "Product Name Z - A"
+  }, {
+    "id" : "brand",
+    "label" : "Brand"
+  }, {
+    "id" : "most-popular",
+    "label" : "Most Popular"
+  }, {
+    "id" : "top-sellers",
+    "label" : "Top Sellers"
+  } ],
+  "suggested_search_phrase": "shoe",
+  "start" : 0,
+  "total" : 4
+}
