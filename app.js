@@ -31,16 +31,7 @@ app.use('/users', users);
 
 app.get('/searchResult',function(req,res){
 	res.writeHead(200,{'Content-Type':'application/json'});
-	var category = req.params.category;
-	var keyword = _.lowerCase(req.params.keyword);
-	console.log(keyword);
-	console.log("======================================>");
-	fs.readFile('./productSearch.json',function(err,data){
-     console.log('***************', err, data);
-     data = JSON.parse(data);
-               res.end('{"result":'+JSON.stringify(data)+'}');
-
-      });
+	res.end(JSON.stringify({"result":"Action executed"}));
 
 }); 
 
