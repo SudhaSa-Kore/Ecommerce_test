@@ -29,9 +29,9 @@ app.use('/', routes);
 app.use('/users', users);
 
 
-app.get('/searchResult',function(req,res){
+app.get('/searchResult/:actionName',function(req,res){
 	res.writeHead(200,{'Content-Type':'application/json'});
-	res.end(JSON.stringify({"result":"Action executed"}));
+	res.end(JSON.stringify({"actionExecuted":req.params.actionName}));
 
 }); 
 
