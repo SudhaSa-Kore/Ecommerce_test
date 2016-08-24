@@ -39,7 +39,7 @@ app.post('/searchResult/:actionName',function(req,res){
 app.get('/doctorsAvailablity',function(req,res){
 	res.writeHead(200,{'Content-Type':'application/json'});
 	res.end(JSON.stringify({
-    "Doctors Availablity": [
+    "availablity": [
         {
             "fromDate": "26/08/2016",
             "toDate": "30/08/2016",
