@@ -31,7 +31,8 @@ app.use('/users', users);
 
 app.post('/searchResult/:actionName',function(req,res){
 	res.writeHead(200,{'Content-Type':'application/json'});
-	res.end(JSON.stringify({"actionExecuted":req.params.actionName,"fieldSent":req.payload}));
+	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
+	res.end(JSON.stringify({"actionExecuted":req.params.actionName,"fieldSent":req.body}));
 
 }); 
 
