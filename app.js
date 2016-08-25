@@ -103,7 +103,7 @@ app.get('/doctorsAvailablity',function(req,res){
 });
 
 
-app.get('/doctorsAvailablity',function(req,res){
+app.get('/doctorsAvailable',function(req,res){
 	res.writeHead(200,{'Content-Type':'application/json'});
 	res.end(JSON.stringify({
     "doctorsDetails": [
