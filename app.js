@@ -140,7 +140,17 @@ app.get('/doctorsAvailable',function(req,res){
 }));
 });
 
-
+app.get('/patientCreate',function(req,res){
+	res.writeHead(200,{'Content-Type':'application/json'});
+	res.end(JSON.stringify({
+  "patientId":"ABCD1234",
+  "fullName":"Bill Gates",
+  "gender":"male",
+  "age":"35",
+  "email":"billgates@microsoft.com",
+  "mobile":"8179343535"
+}));
+});
 
 
 
