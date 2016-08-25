@@ -152,6 +152,22 @@ app.get('/patientCreate',function(req,res){
 }));
 });
 
+app.get('/appointmentCreate',function(req,res){
+	res.writeHead(200,{'Content-Type':'application/json'});
+	res.end(JSON.stringify(({
+  "location": "Kondapur",
+  "doctorName":"Dr SubbaRao",
+  "appointmentType": "New Consultation",
+  "appointmentDate": "26-08-2016",
+  "appointmentTime":"14:00",
+  "patientName":"Bill Gates",
+  "patientId":"ABCD1234",
+  "mobile":"8179343535",
+  "age":"30",
+  "gender":"male",
+  "department":"Cardiology"
+}));
+});
 
 
 // catch 404 and forward to error handler
