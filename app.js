@@ -31,7 +31,7 @@ app.use('/users', users);
 
 app.post('/searchResult/:actionName',function(req,res){
 	res.writeHead(200,{'Content-Type':'application/json'});
-	res.end(JSON.stringify({"actionExecuted":req.params.actionName,"fieldsSent":req.payload}));
+	res.end(JSON.stringify({"actionExecuted":req.params.actionName,"fieldSent":req.payload}));
 
 }); 
 
@@ -100,7 +100,49 @@ app.get('/doctorsAvailablity',function(req,res){
          }
 ]
 }));
-})
+});
+
+
+app.get('/doctorsAvailablity',function(req,res){
+	res.writeHead(200,{'Content-Type':'application/json'});
+	res.end(JSON.stringify({
+    "doctorsDetails": [
+        {
+            "Name": "Dr X",
+            "Qualification": "MBBS,MD,GYN,DGO,FICOG",
+            "location": [
+                {
+                    "Location1": "Kondapur",
+                    "Date1": {
+                        "fromDate": "26/08/2016",
+                        "toDate": "30/08/2016"
+                    },
+                    "Time1": {
+                        "fromTime": "09:00",
+                        "toTime": "12:00"
+                    }
+                }
+            ]
+        },
+        {
+            "Location2": "Gachibowli",
+            "Date2": {
+                "fromDate": "09/09/2016",
+                "toDate": "13/09/2016"
+            },
+            "Time2": {
+                "fromTime": "15:00",
+                "toTime": "18:00"
+            }
+        }
+    ]
+}));
+});
+
+
+
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
