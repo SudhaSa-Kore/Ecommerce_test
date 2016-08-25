@@ -154,7 +154,7 @@ app.get('/patientCreate',function(req,res){
 
 app.get('/appointmentCreate',function(req,res){
 	res.writeHead(200,{'Content-Type':'application/json'});
-	res.end(JSON.stringify(({
+	res.end(JSON.stringify({
   "location": "Kondapur",
   "doctorName":"Dr SubbaRao",
   "appointmentType": "New Consultation",
