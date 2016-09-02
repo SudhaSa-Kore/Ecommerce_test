@@ -36,6 +36,47 @@ app.post('/searchResult/:actionName',function(req,res){
 
 }); 
 
+app.post('/selctorTool',function(req,res){
+	console.log('in selector call');
+	res.writeHead(200,{'Content-Type':'application/json'});
+	  if(req.body.cardCategory === 'lowFeesCard'){
+		if(req.body.payOffCategory === 'allOfIt'){
+			res.end(JSON.stringify({
+                "recommendedCard": "NAB Low Fee Card",
+                "url": "https://microlandpoc.herokuapp.com/images/ccsel-LowFee.jpg"
+            }));
+		}else{
+          res.end(JSON.stringify({"recommendedCard":"NAB Low Rate Card","url":"https://microlandpoc.herokuapp.com/images/ccsel-LowRate.jpg"}));
+      }
+    }else if(req.body.cardCategory === 'servicesCard'){
+      res.end(JSON.stringify({"recommendedCard":"NAB Premium Card","url":"https://microlandpoc.herokuapp.com/images/ccsel-Premium.jpg"}));
+    }else if(req.body.cardCategory === 'rewardsCard'){
+        console.log('in rewards first if');
+      if(req.body.rewardsProgram !== 'undefined' || req.body.rewardsProgram === 'qantasRewards'){
+        console.log('in qantas card');
+          if((req.body.monthlySpend === 'under1000' && req.body.payOffCategory === 'allOfIt') || (req.body.monthlySpend === 'under3000' && req.body.payOffCategory === 'allOfIt') || ((req.body.monthlySpend === 'under7000' && req.body.payOffCategory === 'allOfIt')|| (req.body.monthlySpend === 'under7000' && req.body.payOffCategory === 'itDepends')) || req.body.monthlySpend === 'over7000'){
+             res.end(JSON.stringify({"recommendedCard":"NAB Qantas Rewards Premium Card","url":"https://microlandpoc.herokuapp.com/images/ccsel-QantasPremium.jpg"}));
+         }else{
+             res.end(JSON.stringify({"recommendedCard":"NAB Qantas Rewards Card","url":"https://microlandpoc.herokuapp.com/images/ccsel-Qantas.jpg"}));
+         }
+     }
+    }else if(req.body.cardCategory === 'rewardsCard'){
+        console.log('in rewards second if');
+    if(req.body.rewardsProgram !== 'undefined' || req.body.rewardsProgram === 'velocityRewards'){
+        console.log('in velocity card');
+      if((req.body.monthlySpend === 'under1000' && req.body.payOffCategory === 'allOfIt') || (req.body.monthlySpend === 'under3000' && req.body.payOffCategory === 'allOfIt') || ((req.body.monthlySpend === 'under7000' && req.body.payOffCategory === 'allOfIt')|| (req.body.monthlySpend === 'under7000' && req.body.payOffCategory === 'itDepends')) || req.body.monthlySpend === 'over7000'){
+         res.end(JSON.stringify({"recommendedCard":"NAB Velocity Rewards Premium Card","url":"https://microlandpoc.herokuapp.com/images/ccsel-VelocityPremium.jpg"}));
+     }else{
+         res.end(JSON.stringify({"recommendedCard":"NAB Velocity Rewards Card","url":"https://microlandpoc.herokuapp.com/images/ccsel-Velocity.jpg"}));
+     }
+ }
+}else if(req.body.cardCategory === 'rewardsCard'){
+  if(req.body.rewardsProgram !== 'undefined' && req.body.rewardsProgram === 'flybuysRewards'){
+      res.end(JSON.stringify({"recommendedCard":"NAB flybuys Rewards Card","url":"https://microlandpoc.herokuapp.com/images/ccsel-flybuys.jpg"}));
+  }
+}  
+
+});
 
 app.get('/doctorsAvailablity',function(req,res){
 	res.writeHead(200,{'Content-Type':'application/json'});
