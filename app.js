@@ -10,6 +10,7 @@ var htmlencode = require('htmlencode');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var request = require('request-promise');
 
 var app = express();
 
@@ -35,6 +36,31 @@ app.post('/searchResult/:actionName',function(req,res){
 	res.end(JSON.stringify({"actionExecuted":req.params.actionName,"fieldSent":req.body}));
 
 }); 
+
+
+app.post('/authenticate',function(req,res){
+	//res.writeHead(200,{'Content-Type':'application/json'});
+	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
+	var options=
+       {
+       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/dw/oauth2/access_token?client_id=92739519-521e-40b7-a099-03bd7718ddb8', //URL to hit
+        method: 'POST',
+        headers: {
+        'Authorization' : 'Basic U3VkaGE6S29yZWNvbW1lcmNlMSE6S29yZUAxMjM=',
+        },
+        form : {
+         grant_type: 'urn:demandware:params:oauth:grant-type:client-id:dwsid:dwsecuretoken'
+        }
+    };
+	
+request(options).then(function(response){
+console.log(response);
+res.send(JSON.parse(response));
+}).catch(function(err){
+console.log(err);
+res.send(err);
+});
+});
 
 app.post('/selctorTool',function(req,res){
 	console.log('in selector call');
