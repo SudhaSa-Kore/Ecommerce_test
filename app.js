@@ -62,7 +62,7 @@ res.send(err);
 });
 });
 
-app.get('/authenticate',function(req,res){
+app.post('/abandendCart',function(req,res){
 	//res.writeHead(200,{'Content-Type':'application/json'});
 	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
 	var options=
@@ -78,10 +78,26 @@ app.get('/authenticate',function(req,res){
     };
 	
 request(options).then(function(response){
-console.log(response);
-res.send(JSON.parse(response));
+	response = JSON.parse(response);
+console.log(response.access_token);
+	var options2=
+       {
+       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/customers/abZ0lu9ys35OlDtM27QFqlbvfT/baskets', //URL to hit
+        method: 'GET',
+        headers: {
+        'Authorization' : 'Bearer '+response.access_token,
+        }
+		
+    };
+	request(options2).then(function(res2){
+		console.log(res2);
+		res.send(JSON.parse(res2));
+	}).catch(function(err2){
+		//console.log(err2);
+res.send(err2);
+	});
 }).catch(function(err){
-console.log(err);
+//console.log(err);
 res.send(err);
 });
 });
