@@ -62,7 +62,7 @@ res.send(err);
 });
 });
 
-app.post('/abandendCart',function(req,res){
+app.get('/abandendCart',function(req,res){
 	//res.writeHead(200,{'Content-Type':'application/json'});
 	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
 	var options=
