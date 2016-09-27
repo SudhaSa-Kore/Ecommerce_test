@@ -215,7 +215,7 @@ console.log(response.access_token);
     };
 	return request(options2).then(function(res2){
 		console.log(res2);
-		return res.send(JSON.parse(res2));
+		return res.send([JSON.parse(res2)]);
 	}).catch(function(err2){
 		//console.log(err2);
 	res.send(err2);
