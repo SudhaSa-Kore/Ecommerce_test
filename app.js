@@ -38,30 +38,6 @@ app.post('/searchResult/:actionName',function(req,res){
 }); 
 
 
-app.post('/authenticate',function(req,res){
-	//res.writeHead(200,{'Content-Type':'application/json'});
-	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
-	var options=
-       {
-       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/dw/oauth2/access_token?client_id=92739519-521e-40b7-a099-03bd7718ddb8', //URL to hit
-        method: 'POST',
-        headers: {
-        'Authorization' : 'Basic U3VkaGE6S29yZWNvbW1lcmNlMSE6S29yZUAxMjM=',
-        },
-        form : {
-         grant_type: 'urn:demandware:params:oauth:grant-type:client-id:dwsid:dwsecuretoken'
-        }
-    };
-	
-request(options).then(function(response){
-console.log(response);
-res.send(JSON.parse(response));
-}).catch(function(err){
-console.log(err);
-res.send(err);
-});
-});
-
 app.get('/abandendCart',function(req,res){
 	//res.writeHead(200,{'Content-Type':'application/json'});
 	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
@@ -228,6 +204,107 @@ console.log('===============================');
 });
 
 app.get('/basket',function(req,res){
+	//res.writeHead(200,{'Content-Type':'application/json'});
+	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
+	var options=
+       {
+       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/dw/oauth2/access_token?client_id=92739519-521e-40b7-a099-03bd7718ddb8', //URL to hit
+        method: 'POST',
+        headers: {
+        'Authorization' : 'Basic U3VkaGE6S29yZWNvbW1lcmNlMSE6S29yZUAxMjM=',
+        },
+        form : {
+         grant_type: 'urn:demandware:params:oauth:grant-type:client-id:dwsid:dwsecuretoken'
+        }
+    };
+	
+return request(options).then(function(response){
+	response = JSON.parse(response);
+console.log(response.access_token);
+	var options2=
+       {
+       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/baskets',//URL to hit
+        method: 'POST',
+        headers: {
+        'Authorization' : 'Bearer '+response.access_token,
+        }
+    };
+	return request(options2).then(function(res2){
+		console.log(res2);
+		return res.send([JSON.parse(res2)]);
+	}).catch(function(err2){
+		//console.log(err2);
+	res.send(err2);
+	});
+}).catch(function(err){
+//console.log(err);
+res.send(err);
+});
+console.log('===============================');
+});
+
+app.get('/customerBasket/:basketId/:customerId',function(req,res){
+	//res.writeHead(200,{'Content-Type':'application/json'});
+	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
+	var token = '';
+	var options=
+       {
+       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/dw/oauth2/access_token?client_id=92739519-521e-40b7-a099-03bd7718ddb8', //URL to hit
+        method: 'POST',
+        headers: {
+        'Authorization' : 'Basic U3VkaGE6S29yZWNvbW1lcmNlMSE6S29yZUAxMjM=',
+        },
+        form : {
+         grant_type: 'urn:demandware:params:oauth:grant-type:client-id:dwsid:dwsecuretoken'
+        }
+    };
+	
+    request(options).then(function(response){
+		console.log('response1&&&&&&&&&&&&',response);
+		response = JSON.parse(response);
+	 token = response.access_token;
+	 console.log('token************',token);
+	var options2=
+       {
+       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/customers/'+req.params.customerId,//URL to hit
+        method: 'GET',
+        headers: {
+        'Authorization' : 'Bearer '+token,
+        }
+    };
+	 request(options2).then(function(res2){
+		 res2 = JSON.parse(res2);
+		 console.log(res2.customer_no);
+		 console.log(res2.email);
+		 	var options3=
+       {
+       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/baskets/'+req.params.basketId+'/customer',//URL to hit
+        method: 'PUT',
+        headers: {
+        'Authorization' : 'Bearer '+token,
+        },
+		json:{
+			"customer_no":res2.customer_no,
+			"email":res2.email
+		}
+    };
+	return request(options3).then(function(res3){
+		console.log(res3);
+		return res.json(res3);
+	}).catch(function(err3){
+		res.send(err3);
+	});
+	}).catch(function(err2){
+	res.send(err2);
+	});
+}).catch(function(err){
+//console.log(err);
+res.send(err);
+});
+console.log('===============================');
+});
+
+app.post('/basket',function(req,res){
 	//res.writeHead(200,{'Content-Type':'application/json'});
 	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
 	var options=
