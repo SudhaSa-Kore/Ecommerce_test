@@ -78,7 +78,7 @@ res.send(err);
 });
 });
 
-app.post('/addItems/:basketId',function(req,res){
+app.get('/addItems/:basketId/:product_id',function(req,res){
 	//res.writeHead(200,{'Content-Type':'application/json'});
 	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
 	var options=
@@ -104,7 +104,8 @@ app.post('/addItems/:basketId',function(req,res){
         'Authorization' : 'Bearer '+response.access_token,
       },
 	  json:{
-		  "product_id":req.body.product_id
+		  "product_id":req.params.product_id,
+		  "quantity":1
 	  }
 
     };
