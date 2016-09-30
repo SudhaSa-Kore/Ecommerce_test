@@ -218,10 +218,22 @@ app.get('/basket',function(req,res){
         }
     };
 	
-return request(options).then(function(response){
+      request(options).then(function(response){
 	response = JSON.parse(response);
 console.log(response.access_token);
-	var options2=
+     var options2=
+       {
+       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/customers/abZ0lu9ys35OlDtM27QFqlbvfT/baskets',//URL to hit
+        method: 'GET',
+        headers: {
+        'Authorization' : 'Bearer '+response.access_token,
+        }
+    };
+	request(options2).then(function(res2){
+		var basket ='';
+		if(res2.total > 0){
+			console.log("in if");
+		var options3=
        {
        url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/baskets',//URL to hit
         method: 'POST',
@@ -229,12 +241,19 @@ console.log(response.access_token);
         'Authorization' : 'Bearer '+response.access_token,
         }
     };
-	return request(options2).then(function(res2){
-		console.log(res2);
-		return res.send([JSON.parse(res2)]);
+	 return request(options3).then(function(res2){
+		console.log(res3);
+		return res.send(res3);
+	}).catch(function(err3){
+	    res.send(err3);
+	});
+		}else{
+			console.log("in else",res2);
+			//console.log('&&&&&&&&&&&&',res2.baskets[0].basket_id);
+			return res.send(JSON.parse(res2));
+		}
 	}).catch(function(err2){
-		//console.log(err2);
-	res.send(err2);
+		res.send(err2);
 	});
 }).catch(function(err){
 //console.log(err);
@@ -304,7 +323,97 @@ res.send(err);
 console.log('===============================');
 });
 
-app.post('/basket',function(req,res){
+app.get('/updateBasket/:basketId/:addressId',function(req,res){
+	//res.writeHead(200,{'Content-Type':'application/json'});
+	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
+	var options=
+       {
+       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/dw/oauth2/access_token?client_id=92739519-521e-40b7-a099-03bd7718ddb8', //URL to hit
+        method: 'POST',
+        headers: {
+        'Authorization' : 'Basic U3VkaGE6S29yZWNvbW1lcmNlMSE6S29yZUAxMjM=',
+        },
+        form : {
+         grant_type: 'urn:demandware:params:oauth:grant-type:client-id:dwsid:dwsecuretoken'
+        }
+    };
+	
+    request(options).then(function(response){
+	response = JSON.parse(response);
+console.log(response.access_token);
+	var options2=
+       {
+       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/customers/abZ0lu9ys35OlDtM27QFqlbvfT/addresses/'+req.params.addressId,
+        method: 'GET',
+        headers: {
+        'Authorization' : 'Bearer '+response.access_token,
+        }
+    };
+	 request(options2).then(function(res2){
+		console.log(res2);
+		var options3=
+       {
+       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/baskets/'+req.params.basketId+'/shipments',
+        method: 'POST',
+        headers: {
+        'Authorization' : 'Bearer '+response.access_token,
+        },
+		json:{
+        "gift":false,
+         "shipping_method": {
+                "_type": "shipping_method",
+                "description": "Order received within 7-10 business days",
+                "id": "001",
+                "name": "Ground"
+            },
+         "shipping_address" :
+          {
+              "first_name":"John",
+              "last_name":"Smith",
+              "city":"Boston",
+              "country_code":"US",
+           }
+        }
+    };
+	request(options3).then(function(res3){
+		console.log(res3);
+		var options4=
+       {
+       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/baskets/'+req.params.basketId+'/billing_address ',
+        method: 'PUT',
+        headers: {
+        'Authorization' : 'Bearer '+response.access_token,
+        },
+		json:
+        {
+           "first_name":"John",
+           "last_name":"Smith",
+           "city":"Boston",
+           "country_code":"US",
+           "c_strValue":"cTest"
+        }
+    };
+	return request(options4).then(function(res4){
+		console.log(res4);
+		 return res.send(res4);
+	}).catch(function(err4){
+		res.send(err4);
+	});		
+	}).catch(function(err3){
+		res.send(err3);
+	});
+		}).catch(function(err2){
+		//console.log(err2);
+	res.send(err2);
+	});
+}).catch(function(err){
+//console.log(err);
+res.send(err);
+});
+console.log('===============================');
+});
+
+app.get('/updateBasketPayment/:basketId/payments',function(req,res){
 	//res.writeHead(200,{'Content-Type':'application/json'});
 	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
 	var options=
@@ -324,11 +433,17 @@ return request(options).then(function(response){
 console.log(response.access_token);
 	var options2=
        {
-       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/baskets',//URL to hit
+       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/baskets/'+req.params.basketId+'/payment_instruments',//URL to hit
         method: 'POST',
         headers: {
         'Authorization' : 'Bearer '+response.access_token,
-        }
+        },
+		json:{
+			 "payment_method_id": "CREDIT_CARD",
+              "payment_card": {
+                 "card_type": "Visa"
+               }
+		}
     };
 	return request(options2).then(function(res2){
 		console.log(res2);
@@ -343,6 +458,8 @@ res.send(err);
 });
 console.log('===============================');
 });
+
+
 
 app.get('/checkOut',function(req,res){
 	//res.writeHead(200,{'Content-Type':'application/json'});
