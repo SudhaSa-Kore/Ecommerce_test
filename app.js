@@ -78,7 +78,7 @@ res.send(err);
 });
 });
 
-app.post('/addItems/basketId',function(req,res){
+app.post('/addItems/:basketId',function(req,res){
 	//res.writeHead(200,{'Content-Type':'application/json'});
 	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
 	var options=
