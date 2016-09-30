@@ -111,7 +111,7 @@ app.get('/addItems/:basketId/:product_id',function(req,res){
     };
     return request(options2).then(function(res2){
       console.log(res2);
-      return res.send(JSON.parse(res2));
+      return res.send(res2);
     }).catch(function(err2){
 		//console.log(err2);
     res.send(err2);
