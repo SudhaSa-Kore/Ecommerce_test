@@ -504,6 +504,45 @@ res.send(err);
 console.log('===============================');
 });
 
+app.get('/basketItems/:basketId',function(req,res){
+	//res.writeHead(200,{'Content-Type':'application/json'});
+	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
+	var options=
+ {
+       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/dw/oauth2/access_token?client_id=92739519-521e-40b7-a099-03bd7718ddb8', //URL to hit
+       method: 'POST',
+       headers: {
+        'Authorization' : 'Basic U3VkaGE6S29yZWNvbW1lcmNlMSE6S29yZUAxMjM=',
+      },
+      form : {
+       grant_type: 'urn:demandware:params:oauth:grant-type:client-id:dwsid:dwsecuretoken'
+     }
+   };
+
+   return request(options).then(function(response){
+     response = JSON.parse(response);
+     console.log(response.access_token);
+     var options2=
+     {
+       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/baskets/'+req.params.basketId,//URL to hit
+       method: 'GET',
+       headers: {
+        'Authorization' : 'Bearer '+response.access_token,
+      }
+   };
+   return request(options2).then(function(res2){
+    console.log(res2);
+    return res.send([JSON.parse(res2)]);
+  }).catch(function(err2){
+		//console.log(err2);
+   res.send(err2);
+ });
+}).catch(function(err){
+//console.log(err);
+res.send(err);
+});
+console.log('===============================');
+});
 
 
 app.get('/checkOut',function(req,res){
