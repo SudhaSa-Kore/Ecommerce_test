@@ -38,7 +38,7 @@ app.post('/searchResult/:actionName',function(req,res){
 }); 
 
 
-app.get('/abandendCart',function(req,res){
+app.get('/abandendCart/:customer',function(req,res){
 	//res.writeHead(200,{'Content-Type':'application/json'});
 	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
 	var options=
@@ -58,7 +58,7 @@ app.get('/abandendCart',function(req,res){
      console.log(response.access_token);
      var options2=
      {
-       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/customers/abZ0lu9ys35OlDtM27QFqlbvfT/baskets', //URL to hit
+       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/customers/'+req.params.customer+'/baskets', //URL to hit
        method: 'GET',
        headers: {
         'Authorization' : 'Bearer '+response.access_token,
@@ -122,7 +122,7 @@ res.send(err);
 });
 });
 
-app.get('/orders',function(req,res){
+app.get('/orders/:customer',function(req,res){
 	//res.writeHead(200,{'Content-Type':'application/json'});
 	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
 	var options=
@@ -142,7 +142,7 @@ app.get('/orders',function(req,res){
      console.log(response.access_token);
      var options2=
      {
-       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/customers/abZ0lu9ys35OlDtM27QFqlbvfT/orders', //URL to hit
+       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/customers/'+req.params.customer+'/orders', //URL to hit
        method: 'GET',
        headers: {
         'Authorization' : 'Bearer '+response.access_token,
@@ -247,7 +247,7 @@ res.send(err);
   console.log('===============================');
 });
 
-app.get('/basket',function(req,res){
+app.get('/basket/:customer',function(req,res){
 	//res.writeHead(200,{'Content-Type':'application/json'});
 	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
 	var options=
@@ -267,7 +267,7 @@ app.get('/basket',function(req,res){
      console.log(response.access_token);
      var options2=
      {
-       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/customers/abZ0lu9ys35OlDtM27QFqlbvfT/baskets',//URL to hit
+       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/customers/'+req.params.customer+'/baskets',//URL to hit
        method: 'GET',
        headers: {
         'Authorization' : 'Bearer '+response.access_token,
@@ -368,7 +368,7 @@ res.send(err);
 console.log('===============================');
 });
 
-app.get('/updateBasket/:basketId/:addressId',function(req,res){
+app.get('/updateBasket/:basketId/:addressId/:customer',function(req,res){
 	//res.writeHead(200,{'Content-Type':'application/json'});
 	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
 	var options=
@@ -388,7 +388,7 @@ app.get('/updateBasket/:basketId/:addressId',function(req,res){
      console.log(response.access_token);
      var options2=
      {
-       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/customers/abZ0lu9ys35OlDtM27QFqlbvfT/addresses/'+req.params.addressId,
+       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/customers/'+req.params.customer+'/addresses/'+req.params.addressId,
        method: 'GET',
        headers: {
         'Authorization' : 'Bearer '+response.access_token,
@@ -545,7 +545,7 @@ console.log('===============================');
 });
 
 
-app.get('/checkOut',function(req,res){
+app.get('/checkOut/:customer',function(req,res){
 	//res.writeHead(200,{'Content-Type':'application/json'});
 	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
 	var options=
@@ -565,7 +565,7 @@ app.get('/checkOut',function(req,res){
      console.log(response.access_token);
      var options2=
      {
-       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/customers/abZ0lu9ys35OlDtM27QFqlbvfT/baskets', //URL to hit
+       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/customers/'+req.params.customer+'/baskets', //URL to hit
        method: 'GET',
        headers: {
         'Authorization' : 'Bearer '+response.access_token,
