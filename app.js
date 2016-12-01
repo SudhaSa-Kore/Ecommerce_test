@@ -512,7 +512,7 @@ app.get('/basketItems/:basketId',function(req,res){
        url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/dw/oauth2/access_token?client_id=92739519-521e-40b7-a099-03bd7718ddb8', //URL to hit
        method: 'POST',
        headers: {
-        'Authorization' : 'Basic Basic U3VkaGE6S29yZUAxMjM0NTpLb3JlQDEyMw==',
+        'Authorization' : 'Basic U3VkaGE6S29yZUAxMjM0NTpLb3JlQDEyMw==',
       },
       form : {
        grant_type: 'urn:demandware:params:oauth:grant-type:client-id:dwsid:dwsecuretoken'
