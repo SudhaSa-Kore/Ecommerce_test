@@ -7,6 +7,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 var htmlencode = require('htmlencode');
+var request1 = require('request');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -121,6 +122,34 @@ app.get('/addItems/:basketId/:product_id',function(req,res){
 res.send(err);
 });
 });
+
+
+app.get('/hybrisAddItem/:accessToken',function(req,res){
+	//res.writeHead(200,{'Content-Type':'application/json'});
+	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
+	var options=
+ {
+       url: 'https://kore.demo.hybris.com/rest/v2/apparel-uk/users/current/carts', //URL to hit
+       method: 'GET',
+       headers: {
+        'Authorization' : 'Bearer '+req.params.accessToken,
+      }
+   };
+
+   request(options).then(function(response){
+     response = JSON.parse(response);
+     console.log(response.carts.length);
+	 if(response.carts.length > 0){
+		 var cartsFound = response.carts;
+		 res.send({"code":cartsFound[0].code});
+	 }
+  }).catch(function(err){
+//console.log(err);
+res.send(err);
+});
+});
+
+
 
 app.get('/orders/:customer',function(req,res){
 	//res.writeHead(200,{'Content-Type':'application/json'});
