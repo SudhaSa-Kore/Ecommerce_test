@@ -13,6 +13,8 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var request = require('request-promise');
 
+const ClientCredentials = require('client-credentials');
+ 
 var app = express();
 
 // view engine setup
@@ -124,31 +126,46 @@ res.send(err);
 });
 
 
-app.get('/hybrisAddItem/:accessToken',function(req,res){
+app.get('/hybrisAddItem',function(req,res){
 	//res.writeHead(200,{'Content-Type':'application/json'});
 	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
-	var options=
- {
-       url: 'https://kore.demo.hybris.com/rest/v2/apparel-uk/users/current/carts', //URL to hit
+    var options={
+         url: 'https://kore.demo.hybris.com/authorizationserver/oauth/token',
+          method: 'POST',
+          auth: {
+            user: 'postman',
+            pass: 'postman'
+          },
+          form: {
+           'grant_type': 'client_credentials'
+          }
+	};
+
+  request(options).then(function(response){
+     response = JSON.parse(response);
+     console.log(response.access_token);
+     var options2=
+     {
+       url: 'https://kore.demo.hybris.com/rest/v2/apparel-uk/promotions?type=all', //URL to hit
        method: 'GET',
        headers: {
-        'Authorization' : 'Bearer '+req.params.accessToken,
+        'Authorization' : 'Bearer '+response.access_token,
       }
-   };
 
-   request(options).then(function(response){
-     response = JSON.parse(response);
-     console.log(response.carts.length);
-	 if(response.carts.length > 0){
-		 var cartsFound = response.carts;
-		 res.send({"code":cartsFound[0].code});
-	 }
+    };
+    request(options2).then(function(res2){
+      console.log(res2);
+      res.send(JSON.parse(res2));
+    }).catch(function(err2){
+		//console.log(err2);
+    res.send(err2);
+  });
   }).catch(function(err){
 //console.log(err);
 res.send(err);
 });
-});
 
+});
 
 
 app.get('/orders/:customer',function(req,res){
