@@ -13,8 +13,6 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var request = require('request-promise');
 
-const ClientCredentials = require('client-credentials');
- 
 var app = express();
 
 // view engine setup
