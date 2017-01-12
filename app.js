@@ -79,6 +79,47 @@ res.send(err);
 });
 });
 
+
+app.get('removeItem/:basket_id/items/:item_id',function(req,res){
+	//res.writeHead(200,{'Content-Type':'application/json'});
+	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
+	var options=
+ {
+       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/dw/oauth2/access_token?client_id=92739519-521e-40b7-a099-03bd7718ddb8', //URL to hit
+       method: 'POST',
+       headers: {
+        'Authorization' : 'Basic U3VkaGE6S29yZUAxMjM0NTpLb3JlQDEyMw==',
+      },
+      form : {
+       grant_type: 'urn:demandware:params:oauth:grant-type:client-id:dwsid:dwsecuretoken'
+     }
+   };
+
+   request(options).then(function(response){
+     response = JSON.parse(response);
+     console.log(response.access_token);
+     var options2=
+     {
+       url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/baskets/'+req.params.basket_id+'/items/'+req.params.item_id, //URL to hit
+       method: 'DELETE',
+       headers: {
+        'Authorization' : 'Bearer '+response.access_token,
+      }
+
+    };
+    request(options2).then(function(res2){
+      console.log(res2);
+      res.send(JSON.parse(res2));
+    }).catch(function(err2){
+		//console.log(err2);
+    res.send(err2);
+  });
+  }).catch(function(err){
+//console.log(err);
+res.send(err);
+});
+});
+
 app.get('/addItems/:basketId/:product_id',function(req,res){
 	//res.writeHead(200,{'Content-Type':'application/json'});
 	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
