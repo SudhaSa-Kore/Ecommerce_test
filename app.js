@@ -272,7 +272,7 @@ app.get('/cancelOrder/:order_id',function(req,res){
      var options2=
      {
        url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/s/SiteGenesis/dw/shop/v16_8/orders/'+req.params.order_id, //URL to hit
-       method: 'PATCH',
+       method: 'GET',
        headers: {
         'Authorization' : 'Bearer '+response.access_token,
       },
