@@ -38,6 +38,13 @@ app.post('/searchResult/:actionName',function(req,res){
 
 }); 
 
+app.get('/searchResult/:actionName',function(req,res){
+	res.writeHead(200,{'Content-Type':'application/json'});
+	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
+	res.end(JSON.stringify({"actionExecuted":req.params.actionName,"fieldSent":req.body}));
+
+}); 
+
 
 app.get('/abandendCart/:customer',function(req,res){
 	//res.writeHead(200,{'Content-Type':'application/json'});
