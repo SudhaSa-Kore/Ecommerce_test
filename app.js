@@ -38,12 +38,71 @@ app.post('/searchResult/:actionName',function(req,res){
 
 }); 
 
-app.get('/searchResult/:actionName',function(req,res){
+app.get('/features',function(req,res){
 	res.writeHead(200,{'Content-Type':'application/json'});
 	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
-	res.end(JSON.stringify({"actionExecuted":req.params.actionName,"fieldSent":req.body}));
+	res.end(JSON.stringify({
+"feature":[
+        {
+        "title":"Lower rates or annual fees",
+		"value":"Lower rates or annual fees"
+		},
+		{
+        "title":"Insurances and services",
+		"value":"Insurances and services"
+		},
+		{
+        "title":"Earning rewards points",
+		"value":"Earning rewards points"
+		}
+		]
+		}));
 
 }); 
+
+
+app.get('/expenditure',function(req,res){
+	res.writeHead(200,{'Content-Type':'application/json'});
+	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
+	res.end(JSON.stringify({
+"expenditure":[
+            {"title":"Under $1,000",
+			 "value":"Under $1,000"
+			},
+			{"title":"$1,000 to $3,000",
+			 "value":"$1,000 to $3,000"
+			},
+			{"title":"$3,000 to $7,000",
+			 "value":"$3,000 to $7,000"
+			},
+			{"title":"$7,000 and over",
+			 "value":"$7,000 and over"
+			}
+			]
+			}));
+
+}); 
+
+
+app.get('/balance',function(req,res){
+	res.writeHead(200,{'Content-Type':'application/json'});
+	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
+	res.end(JSON.stringify({
+"balance":[
+          {"title":"The minimum",
+		   "value":"The minimum"
+          },
+		  {"title":"It depends on the amount",
+		   "value":"It depends on the amount"
+          },
+		  {"title":"All of it",
+		   "value":"All of it"
+          }
+		  ]
+}));
+
+}); 
+
 
 
 app.get('/abandendCart/:customer',function(req,res){
