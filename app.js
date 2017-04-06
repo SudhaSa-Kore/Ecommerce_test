@@ -42,21 +42,21 @@ app.get('/features',function(req,res){
 	res.writeHead(200,{'Content-Type':'application/json'});
 	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
 	res.end(JSON.stringify({
-"feature":[
-        {
-        "title":"Lower rates or annual fees",
-		"value":"Lower rates or annual fees"
-		},
-		{
-        "title":"Insurances and services",
-		"value":"Insurances and services"
-		},
-		{
-        "title":"Earning rewards points",
-		"value":"Earning rewards points"
-		}
-		]
-		}));
+  "feature": [
+    {
+      "title": "Lower rates or fees",
+      "value": "Lower rates or fees"
+    },
+    {
+      "title": "Premium services",
+      "value": "Premium services"
+    },
+    {
+      "title": "Reward points",
+      "value": "Reward points"
+    }
+  ]
+}));
 
 }); 
 
@@ -88,17 +88,20 @@ app.get('/balance',function(req,res){
 	res.writeHead(200,{'Content-Type':'application/json'});
 	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
 	res.end(JSON.stringify({
-"balance":[
-          {"title":"The minimum",
-		   "value":"The minimum"
-          },
-		  {"title":"It depends on the amount",
-		   "value":"It depends on the amount"
-          },
-		  {"title":"All of it",
-		   "value":"All of it"
-          }
-		  ]
+  "balance": [
+    {
+      "title": "The minimum",
+      "value": "The minimum"
+    },
+    {
+      "title": "Depends on Amount",
+      "value": "Depends on Amount"
+    },
+    {
+      "title": "All of it",
+      "value": "All of it"
+    }
+  ]
 }));
 
 }); 
