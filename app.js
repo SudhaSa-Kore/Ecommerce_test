@@ -38,75 +38,6 @@ app.post('/searchResult/:actionName',function(req,res){
 
 }); 
 
-app.get('/features',function(req,res){
-	res.writeHead(200,{'Content-Type':'application/json'});
-	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
-	res.end(JSON.stringify({
-  "feature": [
-    {
-      "title": "Lower rates or fees",
-      "value": "Lower rates or fees"
-    },
-    {
-      "title": "Premium services",
-      "value": "Premium services"
-    },
-    {
-      "title": "Reward points",
-      "value": "Reward points"
-    }
-  ]
-}));
-
-}); 
-
-
-app.get('/expenditure',function(req,res){
-	res.writeHead(200,{'Content-Type':'application/json'});
-	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
-	res.end(JSON.stringify({
-"expenditure":[
-            {"title":"Under $1,000",
-			 "value":"Under $1,000"
-			},
-			{"title":"$1,000 to $3,000",
-			 "value":"$1,000 to $3,000"
-			},
-			{"title":"$3,000 to $7,000",
-			 "value":"$3,000 to $7,000"
-			},
-			{"title":"$7,000 and over",
-			 "value":"$7,000 and over"
-			}
-			]
-			}));
-
-}); 
-
-
-app.get('/balance',function(req,res){
-	res.writeHead(200,{'Content-Type':'application/json'});
-	console.log('&&&&&&&&&&&&&&&&&&&&&&&&&&&',req.body);
-	res.end(JSON.stringify({
-  "balance": [
-    {
-      "title": "The minimum",
-      "value": "The minimum"
-    },
-    {
-      "title": "Depends on Amount",
-      "value": "Depends on Amount"
-    },
-    {
-      "title": "All of it",
-      "value": "All of it"
-    }
-  ]
-}));
-
-}); 
-
-
 
 app.get('/abandendCart/:customer',function(req,res){
 	//res.writeHead(200,{'Content-Type':'application/json'});
@@ -116,7 +47,7 @@ app.get('/abandendCart/:customer',function(req,res){
        url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/dw/oauth2/access_token?client_id=92739519-521e-40b7-a099-03bd7718ddb8', //URL to hit
        method: 'POST',
        headers: {
-        'Authorization' : 'Basic U3VkaGE6S29yZUAxMjM0NTY6S29yZUAxMjM=',
+        'Authorization' : 'Basic U3VkaGE6U3VyaWJhYnVAMTIzJDpLb3JlQDEyMzQk',
       },
       form : {
        grant_type: 'urn:demandware:params:oauth:grant-type:client-id:dwsid:dwsecuretoken'
@@ -157,7 +88,7 @@ app.get('/promotions',function(req,res){
        url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/dw/oauth2/access_token?client_id=92739519-521e-40b7-a099-03bd7718ddb8', //URL to hit
        method: 'POST',
        headers: {
-        'Authorization' : 'Basic U3VkaGE6S29yZUAxMjM0NTY6S29yZUAxMjM=',
+        'Authorization' : 'Basic U3VkaGE6U3VyaWJhYnVAMTIzJDpLb3JlQDEyMzQk',
       },
       form : {
        grant_type: 'urn:demandware:params:oauth:grant-type:client-id:dwsid:dwsecuretoken'
@@ -200,7 +131,7 @@ app.get('/addItems/:basketId/:product_id',function(req,res){
        url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/dw/oauth2/access_token?client_id=92739519-521e-40b7-a099-03bd7718ddb8', //URL to hit
        method: 'POST',
        headers: {
-        'Authorization' : 'Basic U3VkaGE6S29yZUAxMjM0NTY6S29yZUAxMjM=',
+        'Authorization' : 'Basic U3VkaGE6U3VyaWJhYnVAMTIzJDpLb3JlQDEyMzQk',
       },
       form : {
        grant_type: 'urn:demandware:params:oauth:grant-type:client-id:dwsid:dwsecuretoken'
@@ -287,7 +218,7 @@ app.get('/orders/:customer',function(req,res){
        url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/dw/oauth2/access_token?client_id=92739519-521e-40b7-a099-03bd7718ddb8', //URL to hit
        method: 'POST',
        headers: {
-        'Authorization' : 'Basic U3VkaGE6S29yZUAxMjM0NTY6S29yZUAxMjM=',
+        'Authorization' : 'Basic U3VkaGE6U3VyaWJhYnVAMTIzJDpLb3JlQDEyMzQk',
       },
       form : {
        grant_type: 'urn:demandware:params:oauth:grant-type:client-id:dwsid:dwsecuretoken'
@@ -328,7 +259,7 @@ app.get('/cancelOrder/:order_id',function(req,res){
        url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/dw/oauth2/access_token?client_id=92739519-521e-40b7-a099-03bd7718ddb8', //URL to hit
        method: 'POST',
        headers: {
-        'Authorization' : 'Basic U3VkaGE6S29yZUAxMjM0NTY6S29yZUAxMjM=',
+        'Authorization' : 'Basic U3VkaGE6U3VyaWJhYnVAMTIzJDpLb3JlQDEyMzQk',
       },
       form : {
        grant_type: 'urn:demandware:params:oauth:grant-type:client-id:dwsid:dwsecuretoken'
@@ -372,7 +303,7 @@ app.get('/orderDetails/:order_id',function(req,res){
        url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/dw/oauth2/access_token?client_id=92739519-521e-40b7-a099-03bd7718ddb8', //URL to hit
        method: 'POST',
        headers: {
-        'Authorization' : 'Basic U3VkaGE6S29yZUAxMjM0NTY6S29yZUAxMjM=',
+        'Authorization' : 'Basic U3VkaGE6U3VyaWJhYnVAMTIzJDpLb3JlQDEyMzQk',
       },
       form : {
        grant_type: 'urn:demandware:params:oauth:grant-type:client-id:dwsid:dwsecuretoken'
@@ -412,7 +343,7 @@ app.get('/basket/:customer',function(req,res){
        url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/dw/oauth2/access_token?client_id=92739519-521e-40b7-a099-03bd7718ddb8', //URL to hit
        method: 'POST',
        headers: {
-        'Authorization' : 'Basic U3VkaGE6S29yZUAxMjM0NTY6S29yZUAxMjM=',
+        'Authorization' : 'Basic U3VkaGE6U3VyaWJhYnVAMTIzJDpLb3JlQDEyMzQk',
       },
       form : {
        grant_type: 'urn:demandware:params:oauth:grant-type:client-id:dwsid:dwsecuretoken'
@@ -473,7 +404,7 @@ app.get('/customerBasket/:basketId/:customerId',function(req,res){
        url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/dw/oauth2/access_token?client_id=92739519-521e-40b7-a099-03bd7718ddb8', //URL to hit
        method: 'POST',
        headers: {
-        'Authorization' : 'Basic U3VkaGE6S29yZUAxMjM0NTY6S29yZUAxMjM=',
+        'Authorization' : 'Basic U3VkaGE6U3VyaWJhYnVAMTIzJDpLb3JlQDEyMzQk',
       },
       form : {
        grant_type: 'urn:demandware:params:oauth:grant-type:client-id:dwsid:dwsecuretoken'
@@ -533,7 +464,7 @@ app.get('/updateBasket/:basketId/:addressId/:customer',function(req,res){
        url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/dw/oauth2/access_token?client_id=92739519-521e-40b7-a099-03bd7718ddb8', //URL to hit
        method: 'POST',
        headers: {
-        'Authorization' : 'Basic U3VkaGE6S29yZUAxMjM0NTY6S29yZUAxMjM=',
+        'Authorization' : 'Basic U3VkaGE6U3VyaWJhYnVAMTIzJDpLb3JlQDEyMzQk',
       },
       form : {
        grant_type: 'urn:demandware:params:oauth:grant-type:client-id:dwsid:dwsecuretoken'
@@ -623,7 +554,7 @@ app.get('/updateBasketPayment/:basketId/payments',function(req,res){
        url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/dw/oauth2/access_token?client_id=92739519-521e-40b7-a099-03bd7718ddb8', //URL to hit
        method: 'POST',
        headers: {
-        'Authorization' : 'Basic U3VkaGE6S29yZUAxMjM0NTY6S29yZUAxMjM=',
+        'Authorization' : 'Basic U3VkaGE6U3VyaWJhYnVAMTIzJDpLb3JlQDEyMzQk',
       },
       form : {
        grant_type: 'urn:demandware:params:oauth:grant-type:client-id:dwsid:dwsecuretoken'
@@ -669,7 +600,7 @@ app.get('/basketItems/:basketId',function(req,res){
        url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/dw/oauth2/access_token?client_id=92739519-521e-40b7-a099-03bd7718ddb8', //URL to hit
        method: 'POST',
        headers: {
-        'Authorization' : 'Basic U3VkaGE6S29yZUAxMjM0NTY6S29yZUAxMjM=',
+        'Authorization' : 'Basic U3VkaGE6U3VyaWJhYnVAMTIzJDpLb3JlQDEyMzQk',
       },
       form : {
        grant_type: 'urn:demandware:params:oauth:grant-type:client-id:dwsid:dwsecuretoken'
@@ -710,7 +641,7 @@ app.get('/checkOut/:customer',function(req,res){
        url: 'https://kore02-tech-prtnr-na06-dw.demandware.net/dw/oauth2/access_token?client_id=92739519-521e-40b7-a099-03bd7718ddb8', //URL to hit
        method: 'POST',
        headers: {
-        'Authorization' : 'Basic U3VkaGE6S29yZUAxMjM0NTY6S29yZUAxMjM=',
+        'Authorization' : 'Basic U3VkaGE6U3VyaWJhYnVAMTIzJDpLb3JlQDEyMzQk',
       },
       form : {
        grant_type: 'urn:demandware:params:oauth:grant-type:client-id:dwsid:dwsecuretoken'
